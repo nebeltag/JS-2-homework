@@ -1,4 +1,8 @@
 "use strict"
+class basket {
+
+}
+
 class ProductList {
     constructor(container = '.products') {
         this.container = container;
@@ -27,10 +31,26 @@ class ProductList {
     }
 
     getSum() {
+        let sum = 0;
+
         this.goods.forEach(element => {
-            return element.price;
+            sum += element.price;
         });
+
+        return sum;
     }
+
+
+    // Вариант 2
+    // getSum() {
+
+    //     let sum = this.goods.reduce(function (acc, current) {
+    //         return acc + current.price;
+    //     }, 0);
+
+    //     return sum;
+    // }
+
 }
 
 class ProductItem {
