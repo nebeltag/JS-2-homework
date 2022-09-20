@@ -44,10 +44,7 @@ class ProductList {
     // Вариант 2
     // getSum() {
 
-    //     let sum = this.goods.reduce(function (acc, current) {
-    //         return acc + current.price;
-    //     }, 0);
-
+    //     let sum = this.goods.reduce((acc, current) => acc + current.price, 0);
     //     return sum;
     // }
 
@@ -72,6 +69,27 @@ class ProductItem {
 
 let list = new ProductList();
 list.getSum();
+
+class Basket {
+    addGood() {
+
+    }
+    removeGood() {
+
+    }
+    changeGood() {
+
+    }
+    render() {
+
+    }
+}
+
+class BasketItem {
+    render() {
+
+    }
+}
 
 
 // const products = [
