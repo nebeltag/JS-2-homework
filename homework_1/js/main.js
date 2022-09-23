@@ -117,6 +117,16 @@ class basketProductList {
 
 let basketList = new basketProductList();
 
+const basketEl = document.querySelector(`.basket`);
+document.querySelector(`.btn-cart`).addEventListener(`click`, () => {
+    basketEl.classList.toggle(`hidden`);
+});
+document.querySelector(`.header`).addEventListener(`click`, event => {
+    if (!event.target.closest(`.btn-cart`)) {
+        return;
+    }
+})
+
 class Basket {
     addGood() {
 
