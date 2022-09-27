@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./style.css">
   <title>Document</title>
 </head>
 
@@ -29,18 +29,21 @@
     Two: 'I'll see you next time.'
     One: 'Sure. Bye.'</p>
 
+  <button id="replace">Replace</button>
+
+
   <script>
     `use strict`
-    const text = document.querySelector(".text").textContent;
-    // console.log(text);
-    // let regExp = new regExp("`", "i");
-    // console.log(regExp.test(text));
-    // text.replace(/``/g, `""`);
-    // const regExp = /'/;
-    // const str = "'I'll see you next time.''It's their anniversary.'"
-    let result = text.replace(/\B\'/gim, '"');
+    let text = document.querySelector(".text");
+    document.getElementById('replace').addEventListener('click', () => {
+      // text.textContent = text.textContent.replace(/'/gi, '"');
+      text.textContent = text.textContent.replace(/\B'/gi, '"');
 
-    document.querySelector(".text").textContent = result;
+    });
+
+
+
+
   </script>
 </body>
 
