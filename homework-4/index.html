@@ -31,6 +31,13 @@
 
   <button id="replace">Replace</button>
 
+  <form class="form" action="#">
+    <label class="name">
+      <input type="text" value="max" placeholder="Maxim" class="inputName">
+    </label>
+    <button type="submit">SUBMIT</button>
+  </form>
+
 
   <script>
     `use strict`
@@ -38,10 +45,7 @@
     document.getElementById('replace').addEventListener('click', () => {
       // text.textContent = text.textContent.replace(/'/gi, '"');
       text.textContent = text.textContent.replace(/\B'/gi, '"');
-
     });
-
-
 
 
   </script>
