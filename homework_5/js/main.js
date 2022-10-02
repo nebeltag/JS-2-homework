@@ -8,38 +8,49 @@ const app = new Vue({
         filtered: [],
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
-        show: false
+        show: false,
     },
+
     methods: {
-        filter(){
-         const regexp = new RegExp(this.userSearch, 'i');
-         this.filtered = this.products.filter(product => regexp.test(product.product_name));
+        filter() {
+            const regexp = new RegExp(this.userSearch, 'i');
+            this.filtered = this.products.filter(product => regexp.test(product.product_name));
+            console.log(this.filtered);
         },
-        getJson(url){
+
+        getJson(url) {
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
                     console.log(error);
                 })
         },
-        addProduct(product){
-                console.log(product.id_product);
+
+        func() {
+            this.products.splice(0, this.products.length, ...this.filtered);
+
         }
+
+        // addProduct(product) {
+        //     console.log(product.id_product);
+        // }
     },
-    mounted(){
-       this.getJson(`${API + this.catalogUrl}`)
-           .then(data => {
-               for(let el of data){
-                   this.products.push(el);
-               }
-           });
-        this.getJson(`getProducts.json`)
+    mounted() {
+        this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
-                for(let el of data){
+                for (let el of data) {
                     this.products.push(el);
                 }
-            })
+            });
+        this.getJson(`getProducts.json`)
+            .then(data => {
+                for (let el of data) {
+                    this.products.push(el);
+                }
+            });
+
     }
+
 })
 
 // class List {
