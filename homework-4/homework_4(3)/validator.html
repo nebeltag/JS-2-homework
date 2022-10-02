@@ -14,19 +14,19 @@
     <div>
       <label>
         Your name<br>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value="">
       </label>
     </div>
     <div>
       <label>
         Your phone<br>
-        <input type="tel" name="phone" id="phone">
+        <input type="tel" name="phone" id="phone" value="">
       </label>
     </div>
     <div>
       <label>
         Your email<br>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" value="">
       </label>
     </div>
     <button id="val-btn">submit</button>
@@ -37,10 +37,10 @@
 
   <script>
     window.onload = () => {
-      document.getElementById('myform').addEventListener('submit', event => {
+      document.getElementById('myform').addEventListener('submit', e => {
         let valid = new Validator('myform');
         if (!valid.valid) {
-          event.preventDefault();
+          e.preventDefault();
         }
       })
     }
