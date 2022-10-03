@@ -1,5 +1,6 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -8,7 +9,7 @@ const app = new Vue({
         filtered: [],
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
-        show: false,
+        show: false
     },
 
     methods: {
@@ -18,6 +19,7 @@ const app = new Vue({
             console.log(this.filtered);
         },
 
+
         getJson(url) {
             return fetch(url)
                 .then(result => result.json())
@@ -25,11 +27,6 @@ const app = new Vue({
                     console.log(error);
                 })
         },
-
-        func() {
-            this.products.splice(0, this.products.length, ...this.filtered);
-
-        }
 
         // addProduct(product) {
         //     console.log(product.id_product);
@@ -40,12 +37,14 @@ const app = new Vue({
             .then(data => {
                 for (let el of data) {
                     this.products.push(el);
+                    this.filtered.push(el);
                 }
             });
         this.getJson(`getProducts.json`)
             .then(data => {
                 for (let el of data) {
                     this.products.push(el);
+                    this.filtered.push(el);
                 }
             });
 
