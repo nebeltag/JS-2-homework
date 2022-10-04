@@ -5,8 +5,10 @@ const app = new Vue({
     el: '#app',
     data: {
         catalogUrl: '/catalogData.json',
+        cart: [],
         products: [],
         filtered: [],
+        quantity: 0,
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
         show: false
@@ -28,9 +30,32 @@ const app = new Vue({
                 })
         },
 
-        // addProduct(product) {
-        //     console.log(product.id_product);
-        // }
+        addProduct(product) {
+            // console.log(product);
+            // let item = product;
+            this.cart.push(product);
+            console.log(this.cart);
+
+            // const find = this.cart.find(item => product.id_product == item.id_product);
+            // console.log(find);
+            // if (find) {
+            //     find.quantity++;
+            // } else {
+
+            // this.$set(item, quantity, 1);
+            // this.cart.push(product);
+            // const cartItem = Object.assign({ quantity: 1 }, product);
+
+            // this.cart.push(cartItem);
+            // }
+        },
+
+        removeProduct(a) {
+            let x = this.cart.indexOf(a);
+            console.log(x);
+            // this.cart.splice(indexOf(this.product), 1);
+        }
+
     },
     mounted() {
         this.getJson(`${API + this.catalogUrl}`)
