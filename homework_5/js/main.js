@@ -48,35 +48,35 @@ const app = new Vue({
 
         addProduct(item) {
 
-            // this.getJson(`${API} / addToBasket.json`)
-            //     .then(data => {
-            //         if (data.result === 1) {
-            let find = this.cart.find(el => el.id_product === item.id_product);
-            if (find) {
-                find.quantity++;
-            } else {
+            this.getJson(`${API}/addToBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        let find = this.cart.find(el => el.id_product === item.id_product);
+                        if (find) {
+                            find.quantity++;
+                        } else {
 
-                const prod = Object.assign({ quantity: 1 }, item)
-                this.cart.push(prod);
-            }
-            //     }
-            // });
+                            const prod = Object.assign({ quantity: 1 }, item)
+                            this.cart.push(prod);
+                        }
+                    }
+                });
 
         },
 
         remove(item) {
-            // this.getJson(`${API} / deleteFromBasket.json`)
-            //     .then(data => {
-            //         if (data.result === 1) {
+            this.getJson(`${API}/deleteFromBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
 
-            if (item.quantity > 1) {
-                item.quantity--;
-            } else {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                        } else {
 
-                this.cart.splice(this.cart.indexOf(item), 1)
-            }
-            //     }
-            // });
+                            this.cart.splice(this.cart.indexOf(item), 1)
+                        }
+                    }
+                });
         }
 
     },
