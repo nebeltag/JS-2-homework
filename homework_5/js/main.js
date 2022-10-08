@@ -5,11 +5,12 @@ const app = new Vue({
     el: '#app',
     data: {
         catalogUrl: '/catalogData.json',
+        cartUrl: '/getBasket.json',
         cart: [],
         products: [],
         filtered: [],
-        quantity: 0,
         imgCatalog: 'https://via.placeholder.com/200x150',
+        imgCart: 'https://via.placeholder.com/50x100',
         userSearch: '',
         show: false
     },
@@ -25,44 +26,73 @@ const app = new Vue({
         getJson(url) {
             return fetch(url)
                 .then(result => result.json())
-                .catch(error => {
-                    console.log(error);
-                })
+                .catch(error => console.log(error))
         },
 
-        addProduct(product) {
-            // console.log(product);
-            // let item = product;
-            this.cart.push(product);
-            console.log(this.cart);
 
-            // const find = this.cart.find(item => product.id_product == item.id_product);
-            // console.log(find);
-            // if (find) {
-            //     find.quantity++;
-            // } else {
+        // addProduct(item) {
 
-            // this.$set(item, quantity, 1);
-            // this.cart.push(product);
-            // const cartItem = Object.assign({ quantity: 1 }, product);
+        //     let find = this.cart.find(el => el.id_product === item.id_product);
+        //     if (find) {
+        //         find.quantity++;
 
-            // this.cart.push(cartItem);
-            // }
+        //     } else {
+        //         function func(item) {
+        //             item.quantity = 1;
+        //             return this.cart.push(item);
+        //         }
+        //     }
+
+        // },
+
+
+        addProduct(item) {
+
+            // this.getJson(`${API} / addToBasket.json`)
+            //     .then(data => {
+            //         if (data.result === 1) {
+            let find = this.cart.find(el => el.id_product === item.id_product);
+            if (find) {
+                find.quantity++;
+            } else {
+
+                const prod = Object.assign({ quantity: 1 }, item)
+                this.cart.push(prod);
+            }
+            //     }
+            // });
+
         },
 
-        removeProduct(a) {
-            let x = this.cart.indexOf(a);
-            console.log(x);
-            // this.cart.splice(indexOf(this.product), 1);
+        remove(item) {
+            // this.getJson(`${API} / deleteFromBasket.json`)
+            //     .then(data => {
+            //         if (data.result === 1) {
+
+            if (item.quantity > 1) {
+                item.quantity--;
+            } else {
+
+                this.cart.splice(this.cart.indexOf(item), 1)
+            }
+            //     }
+            // });
         }
 
     },
     mounted() {
+        this.getJson(`${API + this.cartUrl}`)
+            .then(data => {
+                for (let el of data.contents) {
+                    this.cart.push(el);
+
+                }
+            });
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for (let el of data) {
-                    this.products.push(el);
-                    this.filtered.push(el);
+                    this.$data.products.push(el);
+                    this.$data.filtered.push(el);
                 }
             });
         this.getJson(`getProducts.json`)
@@ -76,6 +106,11 @@ const app = new Vue({
     }
 
 })
+
+
+
+// let arr = [1, 2, 3, 0, 45];
+// console.log(arr.indexOf(45));
 
 // class List {
 //     constructor(url, container, list = list2){
