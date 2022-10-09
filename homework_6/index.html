@@ -13,18 +13,20 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <form action="#" class="search-form" @submit.prevent="filter">
+                <catalog-filter></catalog-filter>
+                <!-- <form action="#" class="search-form" @submit.prevent="filter">
                     <input type="text" class="search-field" v-model="userSearch">
                     <button class="btn-search" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
-                </form>
+                </form> -->
                 <button class="btn-cart" type="button" @click="show=!show">Корзина</button>
 
+                <cart :cart="cart" :img="imgCart" :visibility="show"></cart>
 
-                <div v-show="show" class="cart-block ">
+                <!-- <div v-show="show" class="cart-block ">
                     <p v-if="!cart.length">Cart is empty</p>
-                    <div class="cart-item" data-id="${this.id_product}" v-for="product of cart">
+                    <div class="cart-item" v-for="product of cart">
                         <div class="product-bio">
                             <img :src="imgCatalog" alt="Some image">
                             <div class="product-desc">
@@ -35,15 +37,17 @@
                         </div>
                         <div class="right-block">
                             <p class="product-price">{{product.quantity*product.price}}</p>
-                            <button class="del-btn" data-id="${this.id_product}"
-                                @click="remove(product)">&times;</button>
+                            <button class="del-btn" @click="remove(product)">&times;</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </header>
         <main>
-            <div class="products">
+
+            <products :products="filtered" :img="imgCatalog" @add-product="addProduct"></products>
+
+            <!-- <div class="products">
                 <div class="product-item" v-for="product of filtered" :key="product.id_product">
                     <img :src="imgCatalog" alt="Some img">
                     <div class="desc">
@@ -52,13 +56,16 @@
                         <button class="buy-btn" @click="addProduct(product)">Купить</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </main>
     </div>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
         integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/ProductComponent.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/CartFilter.js"></script>
     <script src="js/main.js"></script>
 </body>
 
