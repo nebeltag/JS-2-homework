@@ -8,6 +8,7 @@ header {
     justify-content: space-between;
     color: #fafafa;
     padding: 30px 80px;
+    position: relative;
 }
 
 button:focus {
@@ -39,6 +40,21 @@ button:focus {
 .btn-cart,
 .logo {
     align-self: center;
+}
+
+.error-message {
+    width: 100%;
+    max-width: 270px;
+    min-height: 40px;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 110px;
+    left: 20px;
+    z-index: 5;
+    background-color: #474747;
+    border-radius: 5px;
+    color: #fc0000;
 }
 
 /*.products {*/
