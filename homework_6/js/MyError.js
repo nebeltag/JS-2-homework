@@ -1,4 +1,4 @@
-Vue.component('my-error', {
+Vue.component('my_error', {
   props: ['error'],
 
   template:

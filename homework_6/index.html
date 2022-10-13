@@ -13,16 +13,16 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <catalog-filter></catalog-filter>
+                <catalog_filter></catalog_filter>
                 <!-- <form action="#" class="search-form" @submit.prevent="filter">
                     <input type="text" class="search-field" v-model="userSearch">
                     <button class="btn-search" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </form> -->
-                <button class="btn-cart" type="button" @click="show=!show">Корзина</button>
 
-                <cart :cart="cart" :img="imgCart" :visibility="show"></cart>
+
+                <cart ref="cart"></cart>
 
                 <!-- <div v-show="show" class="cart-block ">
                     <p v-if="!cart.length">Cart is empty</p>
@@ -42,11 +42,11 @@
                     </div>
                 </div> -->
             </div>
-            <my-error :error="error"></my-error>
+            <my_error :error="error"></my_error>
         </header>
         <main>
 
-            <products :products="filtered" :img="imgCatalog" @add-product="addProduct"></products>
+            <products ref="products"></products>
 
             <!-- <div class="products">
                 <div class="product-item" v-for="product of filtered" :key="product.id_product">
@@ -66,7 +66,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/ProductComponent.js"></script>
     <script src="js/CartComponent.js"></script>
-    <script src="js/CartFilter.js"></script>
+    <script src="js/productFilter.js"></script>
     <script src="js/MyError.js"></script>
     <script src="js/main.js"></script>
 </body>
