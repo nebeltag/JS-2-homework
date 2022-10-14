@@ -97,6 +97,7 @@ img {
 
 .cart {
     position: relative;
+    display: flex;
 }
 
 .cart-block {
