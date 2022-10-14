@@ -29,8 +29,6 @@ const products = {
         for (let el of data) {
           this.products.push(el);
           this.filtered.push(el);
-          // console.log(this.products);
-          // console.log(this.filtered);
         }
       });
     this.$parent.getJson(`getProducts.json`)
@@ -38,8 +36,6 @@ const products = {
         for (let el of data) {
           this.products.push(el);
           this.filtered.push(el);
-          // console.log(this.products);
-          // console.log(this.filtered);
         }
       });
   },
