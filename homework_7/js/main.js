@@ -1,4 +1,4 @@
-// const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 
 const app = new Vue({
@@ -9,14 +9,14 @@ const app = new Vue({
         // cart: [],
         products: [],
         filtered: [],
-        imgCatalog: 'https://via.placeholder.com/200x150',
+        // imgCatalog: 'https://via.placeholder.com/200x150',
         // imgCart: 'https://via.placeholder.com/50x100',
         // userSearch: '',
         show: false,
         error: false
     },
 
-    components: { products, catalog_filter },
+    components: { products, catalog_filter, cart },
 
     methods: {
         // filter() {

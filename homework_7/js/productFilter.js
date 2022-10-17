@@ -9,7 +9,7 @@ const catalog_filter = {
   template:
 
     `<form action="#" class="header-search-form" @submit.prevent='$parent.$refs.products.filter(userSearch)'>
-                            <input id="search-btn" class="header-search-btn" type="search" v-model="userSearch">
+                            <input id="search-btn" class="header-search-btn" type="text" v-model="userSearch">
                             <label for="search-btn"><svg width="26" height="27" viewBox="0 0 26 27"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
