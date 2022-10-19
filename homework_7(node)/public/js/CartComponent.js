@@ -50,6 +50,12 @@ const cart = {
         });
     },
 
+    totalCount() {
+
+
+      console.log(this.cart[1]);
+
+    },
 
     remove(item) {
       this.$parent.getJson(`${API}/deleteFromBasket.json`)
