@@ -1,11 +1,11 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-// const cart = require('./cartRouter');
+const cart = require('./cartRouter');
 
 app.use(express.json());
 app.use('/', express.static('public'));
-// app.use('api/cart', cart);
+app.use('/api/cart', cart);
 
 app.get('/api/products', (req, res) => {
   fs.readFile('server/db/getProducts.json', 'utf-8', (err, data) => {

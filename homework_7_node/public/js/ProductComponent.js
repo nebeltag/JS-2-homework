@@ -34,7 +34,7 @@ const products = {
       // catalogUrl: '/catalogData.json',
       products: [],
       filtered: [],
-      imgCatalog: 'https://via.placeholder.com/200x150'
+      // imgCatalog: 'https://via.placeholder.com/200x150'
     }
   },
 

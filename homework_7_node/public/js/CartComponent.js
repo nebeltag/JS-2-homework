@@ -40,7 +40,12 @@ const cart = {
           if (data.result === 1) {
             let find = this.cart.find(el => el.id_product === item.id_product);
             if (find) {
-              find.quantity++;
+              this.$parent.putJson(`/api/cart/${find.id_product}`, { quantity: 1 })
+                .then(data => {
+                  if (data.result === 1) {
+                    find.quantity++
+                  }
+                })
             } else {
               const prod = Object.assign({ quantity: 1 }, item)
               this.cart.push(prod);
@@ -74,7 +79,7 @@ const cart = {
   },
 
   mounted() {
-    this.$parent.getJson(`json/getBasket.json`)
+    this.$parent.getJson(`/api/cart`)
       .then(data => {
         for (let el of data.contents) {
           this.cart.push(el);
