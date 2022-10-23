@@ -35,32 +35,35 @@ const cart = {
 
   methods: {
     addProduct(item) {
-      this.$parent.getJson(`${API}/addToBasket.json`)
-        .then(data => {
-          if (data.result === 1) {
-            let find = this.cart.find(el => el.id_product === item.id_product);
-            if (find) {
-              this.$parent.putJson(`/api/cart/${find.id_product}`, { quantity: 1 })
-                .then(data => {
-                  if (data.result === 1) {
-                    find.quantity++
-                  }
-                })
-            } else {
-              const prod = Object.assign({ quantity: 1 }, item)
-              this.cart.push(prod);
-              console.log(this.cart);
+
+      let find = this.cart.find(el => el.id_product === item.id_product);
+      if (find) {
+        this.$parent.putJson(`/api/cart/${find.id_product}`, { quantity: 1 })
+          .then(data => {
+            if (data.result === 1) {
+              find.quantity++
             }
-          }
-        });
+          })
+      } else {
+        const prod = Object.assign({ quantity: 1 }, item)
+        this.$parent.postJson(`/api/cart`, prod)
+          .then(data => {
+            if (data.result === 1) {
+              this.cart.push(prod);
+            }
+          })
+        // this.cart.push(prod);
+        // console.log(this.cart);
+      }
+
     },
 
-    totalCount() {
+    // totalCount() {
 
 
-      console.log(this.cart[1]);
+    //   console.log(this.cart[1]);
 
-    },
+    // },
 
     remove(item) {
       this.$parent.getJson(`${API}/deleteFromBasket.json`)

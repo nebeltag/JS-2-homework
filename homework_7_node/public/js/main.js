@@ -45,8 +45,8 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
+                    console.log("error");
+                    // this.$refs.error.text = 'error';
                 })
         },
         putJson(url, data) {
@@ -59,8 +59,8 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
+                    console.log("error");
+                    // this.$refs.error.text = error;
                 })
         },
 
