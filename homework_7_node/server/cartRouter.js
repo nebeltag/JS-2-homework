@@ -19,6 +19,9 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   handler(req, res, 'change', 'server/db/getBasket.json');
 });
+router.delete('/:id', (req, res) => {
+  handler(req, res, 'remove', 'server/db/getBasket.json');
+});
 
 
 module.exports = router;

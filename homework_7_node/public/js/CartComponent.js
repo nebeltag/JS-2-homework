@@ -66,18 +66,25 @@ const cart = {
     // },
 
     remove(item) {
-      this.$parent.getJson(`${API}/deleteFromBasket.json`)
-        .then(data => {
-          if (data.result === 1) {
 
-            if (item.quantity > 1) {
+      if (item.quantity > 1) {
+        this.$parent.putJson(`/api/cart/${item.id_product}`, { quantity: -1 })
+          .then(data => {
+            if (data.result === 1) {
               item.quantity--;
-            } else {
-
-              this.cart.splice(this.cart.indexOf(item), 1)
             }
-          }
-        });
+          })
+      } else {
+        this.$parent.delJson(`/api/cart/${item.id_product}`)
+          .then(data => {
+            if (data.result === 1) {
+              this.cart.splice(this.cart.indexOf(item), 1)
+            } else {
+              console.log("error");
+            }
+          })
+      }
+
     }
   },
 
